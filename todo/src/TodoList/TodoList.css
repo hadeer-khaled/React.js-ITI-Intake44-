@@ -1,0 +1,9 @@
+.task-container {
+  border-bottom: 1px solid #9e9e9e2e;
+  /* background-color: beige; */
+  padding-bottom: 6px;
+  margin-bottom: 5px;
+}
+.done-task {
+  text-decoration: line-through;
+}
