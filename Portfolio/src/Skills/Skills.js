@@ -1,7 +1,31 @@
-import React from "react";
+// import React from "react";
+import React, { useState } from "react";
+
 import "./Skills.css";
 import MyProgressBar from "./../MyProgressBar/MyProgressBar";
 const Skills = () => {
+  const [skillsList, setSkillsList] = useState([
+    {
+      id: 0,
+      name: "Node.js",
+      progress: 70,
+    },
+    {
+      id: 1,
+      name: "JavaScript",
+      progress: 90,
+    },
+    {
+      id: 2,
+      name: "Angular",
+      progress: 80,
+    },
+    {
+      id: 3,
+      name: "React",
+      progress: 60,
+    },
+  ]);
   return (
     <section className="skills-section  w-100 px-5 py-5 d-flex flex-column justify-content-between align-items-center">
       <div className="top-part d-flex flex-column justify-content-between align-items-center">
@@ -26,14 +50,23 @@ const Skills = () => {
           </ul>
         </div>
         <div className="w-50">
-          <MyProgressBar progress={"70"} skillName={"Node.js"} />
+          {/* ------------- Lab 1 ------------- */}
+          {/* <MyProgressBar progress={"70"} skillName={"Node.js"} />
           <MyProgressBar progress={"90"} skillName={"JavaScript"} />
           <MyProgressBar progress={"80"} skillName={"Angular"} />
-          <MyProgressBar progress={"60"} skillName={"React"} />
-          {/* <MyProgressBar progress={"70"} />
-          <MyProgressBar progress={"90"} />
-          <MyProgressBar progress={"80"} />
-          <MyProgressBar progress={"60"} /> */}
+          <MyProgressBar progress={"60"} skillName={"React"} /> */}
+
+          {/* -------------  For Lab 2 ------------- */}
+          {skillsList.map((skill, index) => {
+            return (
+              <div key={`skill-${index}`}>
+                <MyProgressBar
+                  progress={skill.progress}
+                  skillName={skill.name}
+                />
+              </div>
+            );
+          })}
         </div>
       </div>
     </section>
