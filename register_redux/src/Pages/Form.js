@@ -1,10 +1,14 @@
 import React, { useEffect } from "react";
 import { useState } from "react";
-import MyInput from "./MyInput";
-import { useSelector, useDispatch } from "react-redux";
-import { addUserInfo } from "./store/slices/registrationSlice";
+import { useDispatch } from "react-redux";
+
+import { useNavigate } from "react-router-dom";
+
+import MyInput from "../MyInput";
+import { addUserInfo } from "../store/slices/registrationSlice";
 
 function Form() {
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const [isFormSubmitted, setIseFormSubmiited] = useState(false);
   const [userInfo, setUserInfo] = useState({
@@ -12,7 +16,7 @@ function Form() {
     email: "",
     password: "",
     confirmPassword: "",
-    image: null,
+    // image: null,
   });
 
   const [userInfoErrs, setUserInfoErrors] = useState({
@@ -20,7 +24,7 @@ function Form() {
     emailErr: "",
     passwordErr: "",
     confirmPasswordErr: "",
-    imageErr: null,
+    // imageErr: null,
   });
 
   useEffect(() => {
@@ -33,6 +37,7 @@ function Form() {
     ) {
       console.log("request ur api");
       dispatch(addUserInfo(userInfo));
+      navigate("/userdata");
     }
   }, [userInfoErrs, isFormSubmitted]);
 
@@ -65,13 +70,13 @@ function Form() {
       default:
     }
   };
-  const handleImageChange = (e) => {
-    const file = e.target.files[0];
-    setUserInfo({
-      ...userInfo,
-      image: file,
-    });
-  };
+  // const handleImageChange = (e) => {
+  //   const file = e.target.files[0];
+  //   setUserInfo({
+  //     ...userInfo,
+  //     image: file,
+  //   });
+  // };
 
   const validateForm = () => {
     setUserInfoErrors({
@@ -101,7 +106,7 @@ function Form() {
         : userInfo.confirmPassword !== userInfo.password
         ? "Passwords do not match"
         : "",
-      imageErr: !userInfo.image ? "Image is required" : "",
+      // imageErr: !userInfo.image ? "Image is required" : "",
     });
   };
 
@@ -182,13 +187,13 @@ function Form() {
               </div>
             )}
           </div>
-          <div>
+          {/* <div>
             <label>Upload Image:</label>
             <input type="file" accept="image/*" onChange={handleImageChange} />
             {userInfoErrs.imageErr && (
               <div className="text-danger mb-2">{userInfoErrs.imageErr}</div>
             )}
-          </div>
+          </div> */}
 
           <button className="btn btn-primary" onClick={handleSubmit}>
             submit

@@ -2,6 +2,8 @@ import { Outlet, createBrowserRouter } from "react-router-dom";
 import ErrorPage from "./Pages/ErrorPage/ErrorPage";
 import Home from "./Pages/Home/Home";
 import Navbar from "./Components/Navbar";
+import Form from "./Pages/Form";
+import UserDetails from "./Pages/UserDetails";
 
 function Layout() {
   return (
@@ -22,12 +24,12 @@ const router = createBrowserRouter([
         element: <Home />,
       },
       {
-        path: "products",
-        element: <Products></Products>,
+        path: "register",
+        element: <Form></Form>,
       },
       {
-        path: "products/:productID",
-        element: <ProductDetails></ProductDetails>,
+        path: "userdata",
+        element: <UserDetails></UserDetails>,
       },
     ],
   },
